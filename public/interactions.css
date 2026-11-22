@@ -1,0 +1,26 @@
+/* Shared focus and state treatments. */
+:where(a, button, summary, [role="option"]) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: #b89b6340;
+}
+:where(button, summary, [role="option"], .text-link) {
+  border-radius: var(--control-radius, 8px);
+}
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus, var(--green));
+  outline-offset: 3px;
+}
+:where(.text-link, .inline-link):hover { text-decoration-thickness: 2px; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.check-grid label { padding: 8px 10px; border-radius: var(--control-radius, 8px); }
+.check-grid label:has(input:checked) { background: var(--section); }
+.consent:has(input:focus-visible) { outline: 2px solid var(--focus, var(--green)); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  :where(a, button, summary, [role="option"]) { transition: none !important; }
+}
+@media (forced-colors: active) {
+  button[aria-pressed="true"], [role="option"][aria-selected="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: 1px;
+  }
+}

@@ -1,0 +1,79 @@
+/* Course-led art direction: forest, natural light and a continuous photographic collection. */
+.luxury-destinations{padding:100px 0 64px;background:#102e23;color:#f8f1e4;overflow:hidden;position:relative}.luxury-destinations:before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#b8975a88,transparent)}.collection-intro{display:grid;grid-template-columns:1.45fr 1fr;gap:80px;align-items:end;margin-bottom:56px}.collection-intro h2{font-size:clamp(48px,5.5vw,80px);line-height:1.06;margin-bottom:0}.collection-intro .kicker{color:#d8c49c}.collection-intro-aside>p{font-size:16px;line-height:1.65;color:#c9d1c5;max-width:37ch;margin-bottom:28px}.location-film{display:flex;align-items:center;gap:20px}.location-film video{width:156px;height:88px;object-fit:cover;background:#173c2b;border-radius:4px}.collection-rail{display:flex;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(40px,calc((100vw - 1280px)/2));scroll-padding-inline:max(40px,calc((100vw - 1280px)/2));outline-offset:-6px}.collection-rail::-webkit-scrollbar{display:none}.course-scene{flex:0 0 min(1200px,calc(100vw - 128px));height:600px;position:relative;scroll-snap-align:start;isolation:isolate;overflow:hidden;background:#204434;border-radius:3px}.course-panorama,.course-scrim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}.course-panorama{object-position:center 54%;transform:scale(1.005)}.course-scrim{z-index:-1;background:linear-gradient(180deg,rgba(4,24,13,.25),transparent 32%,rgba(3,20,12,.08) 48%,rgba(3,20,12,.82) 100%)}.course-caption{position:absolute;bottom:56px;left:40px;right:40px;display:flex;align-items:end;justify-content:space-between;gap:40px}.course-character{font-size:12px;color:#e4d4b0;margin-bottom:12px}.course-caption h3{font-size:clamp(52px,6vw,92px);line-height:1;margin-bottom:20px;color:#fff}.course-caption>div>p:last-child{font-size:15px;line-height:1.65;color:#f8f1e4d9;margin:0}.course-location{position:absolute;bottom:20px;left:40px;font-size:10px;color:#f8f1e480;font-variant-numeric:tabular-nums}.course-photo-credit{position:absolute;bottom:12px;left:40px;font-size:9px;color:#f8f1e499}.course-scene[data-course=brohof] .course-panorama{object-position:center bottom}.collection-arrow{width:44px;height:44px;border:1px solid #f8f1e44d;border-radius:50%;font-size:20px;display:grid;place-items:center;transition:background .2s,color .2s}.collection-arrow:hover{background:#e6d1a2;color:#102e23}.collection-note{display:flex;justify-content:space-between;gap:32px;margin-top:24px;margin-bottom:0;font-size:10px;line-height:1.6;color:#a6b5a5}.collection-note span:first-child{color:#d8c49c}.luxury-destinations :focus-visible{outline:2px solid #e0c58c;outline-offset:6px}
+@media(min-width:1600px){.course-scene{height:660px}}@media(max-width:1100px){.collection-intro{gap:48px}.course-scene{height:560px}.course-caption{gap:24px}}
+@media(max-width:767px){.luxury-destinations{padding:72px 0 40px}.collection-intro{grid-template-columns:1fr;gap:28px;margin-bottom:32px}.collection-intro h2{font-size:44px}.collection-intro-aside>p{font-size:15px;max-width:42ch;margin-bottom:24px}.location-film video{width:128px;height:72px}.collection-rail{gap:12px;padding-inline:20px;scroll-padding-inline:20px}.course-scene{flex-basis:calc(100vw - 52px);height:540px}.course-caption{left:24px;right:24px;bottom:48px;display:block}.course-caption h3{font-size:46px;margin-bottom:20px}.course-character{font-size:10px;max-width:25ch;line-height:1.6}.course-caption>div>p:last-child{font-size:13px}.course-location{left:24px;bottom:16px;font-size:9px}.course-photo-credit{left:24px;font-size:8px;max-width:160px;line-height:1.5}.collection-arrow{width:44px;height:44px}.collection-note{display:block;margin-top:20px;font-size:9px}.collection-note span{display:block}.collection-note span:last-child{margin-top:8px}.course-panorama{object-position:50% center}.course-scene[data-course=adare] .course-panorama{object-position:40% center}.course-scene[data-course=andermatt] .course-panorama{object-position:45% center}}
+@media(prefers-reduced-motion:reduce){.course-panorama{transform:none}.collection-rail{scroll-behavior:auto}}
+/* A visibly moving photograph, independent of whether the tour is advancing. */
+.course-panorama{animation:course-camera-push 12s ease-in-out infinite alternate;animation-play-state:paused;transform-origin:55% 52%;will-change:auto}.collection-gallery[data-motion=on] .course-scene.is-current .course-panorama{animation-play-state:running;will-change:transform}.course-scene[data-course=brohof] .course-panorama{transform-origin:100% 100%}.course-scene[data-course=quinta] .course-panorama{object-position:50% 80%}.course-scene[data-course=standrews] .course-panorama{object-position:50% 48%}.course-scene:not(.is-current) .course-panorama{animation-name:none;transform:scale(1.01)}.collection-note{font-size:12px}.collection-note #collection-status{font-size:16px}.location-film video{width:200px;height:112px}.course-photo-credit{max-width:74%;font-size:10px;line-height:1.5}.course-photo-credit a{color:inherit}
+@keyframes course-camera-push{from{transform:scale(1.01) translate3d(0,0,0)}to{transform:scale(1.115) translate3d(-.4%,.15%,0)}}
+
+@media(max-width:767px){.collection-note #collection-status{font-size:14px}.collection-note span:last-child{font-size:10px}.location-film video{width:164px;height:92px}.course-photo-credit{font-size:9px;max-width:80%}}
+@media(prefers-reduced-motion:reduce){.course-panorama{animation:none!important;transform:none!important;will-change:auto!important}}
+/* Keep the overlaid course copy readable over pale skies on narrow screens. */
+@media(max-width:767px){.course-scrim{background:linear-gradient(180deg,rgba(4,24,13,.2),rgba(3,20,12,.52) 34%,rgba(3,20,12,.66) 60%,rgba(3,20,12,.88) 100%)}.course-character{font-size:11px;color:#f3e7cf;text-shadow:0 1px 8px #0008}}
+
+/* Native scrolling owns the rail, including touch momentum and interruptions. */
+.collection-rail{scroll-snap-type:x proximity;overflow-anchor:none}.course-scene{contain:layout paint}.course-scene:not(.is-current) .course-panorama{animation-name:course-camera-push;animation-play-state:paused}.collection-gallery[data-motion=off] .course-panorama{animation-play-state:paused}
+
+/* A low photographic strip keeps all five regions within reach. */
+.collection-navigation.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 20px);
+  width: min(1280px, calc(100% - 48px));
+  margin-top: 12px;
+}
+.collection-index {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(4px, 1vw, 14px);
+}
+.collection-index button {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 6px;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 0 9px;
+  border-radius: 6px;
+  color: #e3e9e0;
+  font-family: var(--sans);
+  font-size: clamp(12px, 1.25vw, 15px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.collection-index button img {
+  display: block;
+  width: 100%;
+  height: clamp(32px, 4vw, 48px);
+  border-radius: 3px;
+  object-fit: cover;
+  opacity: .72;
+}
+.collection-index [aria-current=true] {
+  color: #f5dfaa;
+  font-weight: 650;
+  box-shadow: inset 0 -2px #d5b878;
+}
+.collection-index [aria-current=true] img,
+.collection-index button:focus-visible img {
+  opacity: 1;
+}
+.collection-index button:focus-visible,
+.collection-playback:focus-visible {
+  outline: 2px solid #f5dfaa;
+  outline-offset: 2px;
+}
+@media (hover:hover) {
+  .collection-index button:hover img { opacity: 1; }
+}
+@media (max-width:767px) {
+  .collection-navigation.wrap { width: calc(100% - 24px); }
+  .collection-index button { font-size: clamp(10px, 2.8vw, 13px); }
+}
+@media (forced-colors:active) {
+  .collection-index [aria-current=true] { outline: 2px solid Highlight; }
+}

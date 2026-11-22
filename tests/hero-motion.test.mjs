@@ -1,0 +1,26 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createHeroMotion} from '../public/ocean.js';
+class Element{constructor(){this.events=new Map();this.attributes=new Map();this.dataset={};this.hidden=false;}addEventListener(type,handler){if(!this.events.has(type))this.events.set(type,new Set());this.events.get(type).add(handler);}removeEventListener(type,handler){this.events.get(type)?.delete(handler);}emit(type){for(const handler of this.events.get(type)||[])handler({type,target:this});}setAttribute(k,v){this.attributes.set(k,v);}getAttribute(k){return this.attributes.get(k)??null;}}
+function harness({blocked=false,reduced=false,saveData=false,width=1280}={}){const hero=new Element(),video=new Element(),button=new Element(),doc=new Element(),preference=new Element();doc.hidden=false;preference.matches=reduced;let calls=0,loads=0,snapshot;video.paused=true;video.readyState=0;video.currentTime=0;video.pause=()=>video.paused=true;video.load=()=>loads++;video.play=()=>{calls++;snapshot={hidden:video.hidden,muted:video.muted,defaultMuted:video.defaultMuted,inline:video.playsInline,autoplay:video.autoplay};if(blocked)return Promise.reject(Error('Blocked autoplay'));video.paused=false;return Promise.resolve();};doc.querySelector=s=>({'.hero':hero,'#hero-film':video,'#hero-motion-toggle':button}[s]);let intersect,id=0;const timers=new Map();const view={innerWidth:width,navigator:{connection:{saveData}},matchMedia:()=>preference,setTimeout:fn=>{timers.set(++id,fn);return id;},clearTimeout:id=>timers.delete(id),IntersectionObserver:class{constructor(fn){intersect=fn;}observe(){}disconnect(){}}};const controller=createHeroMotion(doc,view);return{hero,video,button,doc,preference,controller,visible:()=>intersect([{isIntersecting:true}]),offscreen:()=>intersect([{isIntersecting:false}]),allow:()=>blocked=false,metrics:()=>({calls,loads,snapshot}),watch(){const fns=[...timers.values()];timers.clear();fns.forEach(fn=>fn());}};}
+const settle=async()=>{await Promise.resolve();await Promise.resolve();};
+test('Safari receives a visible, muted inline full-frame film before play is requested',async()=>{const h=harness();h.visible();await settle();assert.deepEqual(h.metrics().snapshot,{hidden:false,muted:true,defaultMuted:true,inline:true,autoplay:true});assert.equal(h.video.getAttribute('webkit-playsinline'),'');assert.match(h.video.getAttribute('src'),/journeys-film-1080.mp4/);assert.equal(h.hero.dataset.motionState,'video');h.controller.sync();assert.equal(h.metrics().loads,1);});
+test('blocked autoplay keeps the photographic poster and does not substitute generated water',async()=>{const h=harness({blocked:true,width:390});h.visible();h.button.emit('click');await settle();assert.equal(h.controller.state().blocked,true);assert.equal(h.video.hidden,true);assert.match(h.video.poster,/portrait.webp/);assert.equal(h.hero.dataset.motionState,'blocked');});
+test('a trusted touch retries a blocked native film without refetching its source',async()=>{const h=harness({blocked:true});h.visible();await settle();h.allow();h.doc.emit('touchend');await settle();assert.equal(h.video.hidden,false);assert.equal(h.hero.dataset.motionState,'video');assert.equal(h.metrics().loads,1);});
+test('offscreen and hidden pages stop the native decoder',async()=>{const h=harness();h.visible();await settle();h.offscreen();assert.equal(h.video.paused,true);assert.equal(h.hero.dataset.motionState,'offscreen');h.visible();await settle();h.doc.hidden=true;h.doc.emit('visibilitychange');assert.equal(h.video.paused,true);});
+test('reduced motion and data saving never load the background movie',()=>{for(const options of [{reduced:true},{saveData:true}]){const h=harness(options);h.visible();assert.equal(h.metrics().loads,0);assert.equal(h.metrics().calls,0);assert.equal(h.hero.dataset.motionState,'reduced');}});
+test('the accessible pause control stops and resumes native playback',async()=>{const h=harness();h.visible();await settle();h.button.emit('click');assert.equal(h.controller.state().paused,true);assert.equal(h.video.paused,true);h.button.emit('click');await settle();assert.equal(h.controller.state().paused,false);assert.equal(h.video.paused,false);});
+test('a stalled native clock returns to the permanent photographic poster',async()=>{const h=harness();h.visible();await settle();h.watch();assert.equal(h.hero.dataset.motionState,'blocked');assert.equal(h.video.hidden,true);const moving=harness();moving.visible();await settle();moving.video.currentTime=1;moving.watch();assert.equal(moving.hero.dataset.motionState,'video');});
+test('media failure leaves a still scene and destruction removes recovery listeners',async()=>{const h=harness();h.visible();await settle();h.video.emit('error');assert.equal(h.hero.dataset.motionState,'still');assert.equal(h.video.hidden,true);h.controller.destroy();const calls=h.metrics().calls;h.doc.emit('click');assert.equal(h.metrics().calls,calls);});
+
+test('the mobile poster loads without a video until the visitor requests playback',async()=>{
+ const h=harness({width:390});
+ h.visible();
+ assert.equal(h.metrics().loads,0);
+ assert.equal(h.video.hidden,true);
+ h.button.emit('click');
+ await settle();
+ assert.equal(h.metrics().loads,1);
+ assert.equal(h.video.paused,false);
+ assert.equal(h.video.playsInline,true);
+});

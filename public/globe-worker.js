@@ -1,0 +1,15 @@
+/* The GPU globe is isolated from scrolling, typing and selection on the UI thread. */
+let canvas,gl,program,longitude,latitude,ready=false,last={lon:0,lat:0,size:330};
+function shader(type,source){const value=gl.createShader(type);gl.shaderSource(value,source);gl.compileShader(value);if(!gl.getShaderParameter(value,gl.COMPILE_STATUS))throw Error('Shader unavailable');return value;}
+function draw(data=last){last=data;if(!ready)return;if(canvas.width!==data.size){canvas.width=canvas.height=data.size;}gl.viewport(0,0,canvas.width,canvas.height);gl.uniform1f(longitude,data.lon);gl.uniform1f(latitude,data.lat);gl.drawArrays(gl.TRIANGLES,0,6);}
+async function initialize(surface){
+ canvas=surface;canvas.width=canvas.height=330;gl=canvas.getContext('webgl',{alpha:true,antialias:false,powerPreference:'low-power'});if(!gl)throw Error('WebGL unavailable');
+ const vs=shader(gl.VERTEX_SHADER,'attribute vec2 p;varying vec2 uv;void main(){uv=p;gl_Position=vec4(p,0.,1.);}');
+ const fs=shader(gl.FRAGMENT_SHADER,`precision mediump float;varying vec2 uv;uniform sampler2D earth;uniform float longitude;uniform float latitude;
+ void main(){vec2 p=uv*1.075;float r=dot(p,p);if(r>1.)discard;vec3 n=vec3(p,sqrt(1.-r));float c=cos(latitude),s=sin(latitude);vec3 v=vec3(n.x,n.y*c+n.z*s,-n.y*s+n.z*c);float lon=atan(v.x,v.z)+longitude;vec2 map=vec2(fract(.5+lon/6.2831853),.5-asin(v.y)/3.14159265);vec3 color=texture2D(earth,map).rgb;float light=max(0.,dot(n,normalize(vec3(-.6,.4,1.))));color*=.24+.85*light;float rim=pow(1.-n.z,3.);color+=vec3(.57,.45,.25)*rim*.42;gl_FragColor=vec4(color,1.);}`);
+ program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error('Globe unavailable');gl.useProgram(program);
+ const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const location=gl.getAttribLocation(program,'p');gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,2,gl.FLOAT,false,0,0);longitude=gl.getUniformLocation(program,'longitude');latitude=gl.getUniformLocation(program,'latitude');
+ const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);for(const setting of [gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,setting,gl.LINEAR);for(const setting of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,setting,gl.CLAMP_TO_EDGE);
+ const response=await fetch('/assets/earth-blue-marble-1024.webp');if(!response.ok)throw Error('Texture unavailable');const image=await createImageBitmap(await response.blob());gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,image);image.close();ready=true;draw();postMessage({type:'ready'});
+}
+onmessage=event=>{const data=event.data;if(data.type==='init')initialize(data.canvas).catch(()=>postMessage({type:'unsupported'}));else if(data.type==='draw')draw(data);else if(data.type==='clear'&&gl)gl.clear(gl.COLOR_BUFFER_BIT);};

@@ -1,0 +1,46 @@
+{
+  "adare": {
+    "local": "/assets/adare-800.webp",
+    "coordinates": [
+      52.5638,
+      -8.7745
+    ],
+    "source": "https://www.adaremanor.com/golf/",
+    "author": "Official venue media \u00b7 concept preview",
+    "license": "Permission required for public release",
+    "alt": "The Golf Course at Adare Manor"
+  },
+  "andermatt": {
+    "local": "/assets/andermatt-800.webp",
+    "coordinates": [
+      46.6406,
+      8.5842
+    ],
+    "source": "https://andermatt-golf.ch/en",
+    "author": "Official venue media \u00b7 concept preview",
+    "license": "Permission required for public release",
+    "alt": "Andermatt Golf Course"
+  },
+  "bernardus": {
+    "local": "/assets/bernardus-800.webp",
+    "coordinates": [
+      51.653,
+      5.218
+    ],
+    "source": "https://bernardusgolf.com/",
+    "author": "Official venue media \u00b7 concept preview",
+    "license": "Permission required for public release",
+    "alt": "Bernardus Golf"
+  },
+  "brohof": {
+    "local": "/assets/brohof-800.webp",
+    "coordinates": [
+      59.479,
+      17.715
+    ],
+    "source": "https://www.brohofslott.com/",
+    "author": "Official venue media \u00b7 concept preview",
+    "license": "Permission required for public release",
+    "alt": "Bro Hof Slott Golf Club"
+  }
+}

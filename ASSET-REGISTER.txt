@@ -1,0 +1,78 @@
+JUNE LINKS — MEDIA SOURCES AND LICENSES
+
+Covers every media file the site serves from public/ and the originals in source-media/.
+Visitors see the same credits at /credits.html and beside each course photo.
+
+BRAND (supplied by June Links)
+- public/assets/brand/wordmark-official.png, wordmark-upload-white.png,
+  social-icon-64.png, social-icon-180.png, public/assets/pdf/june-links-logo.png and
+  public/favicon.ico: June Links logo artwork supplied by the owner, or derived from it.
+- public/assets/brand/cotton-stationery.webp: original paper texture made for June Links.
+- public/assets/xyopst-logo.png: Xyopst Inc logo, from https://xyopst.com/, shown with the
+  "Powered by Xyopst Inc" footer link.
+
+HERO FILM
+public/assets/brand/journeys-film-1080.mp4 and journeys-poster-{800,1280,1920,portrait}.webp
+are an edit of three Pexels videos, used under the Pexels License (https://www.pexels.com/license/):
+- California: Logan Voss, Pexels 30743320
+  https://www.pexels.com/video/scenic-coastline-golf-course-at-rancho-palos-verdes-30743320/
+- Parkland: David Pickup, Pexels 32304033
+  https://www.pexels.com/video/scenic-aerial-view-of-lush-golf-course-and-lake-32304033/
+- Mexico: Sergio Benitez, Pexels 18764316
+  https://www.pexels.com/video/hole-17-18764316/
+The edit uses one-second dissolves, resizing, a light colour grade and compression.
+Originals: source-media/recorded-journeys/. Rebuild: scripts/build-recorded-hero.py.
+The footage is travel inspiration. It does not depict a June Links itinerary or partner.
+
+COURSE COLLECTION (public/assets/collection/)
+- Ireland, Scotland, USA and Mexico: photographs supplied by June Links, showing Royal County Down,
+  Old Petty at Cabot Highlands, Pebble Beach and Cabo Del Sol. No license is claimed beyond the
+  owner's supply.
+- England: Royal Lytham & St Annes, Wojciech Migda, Wikimedia Commons, CC BY-SA 3.0.
+  https://commons.wikimedia.org/wiki/File:2009_Women%27s_British_Open_-_Royal_Lytham_%26_St_Annes_Golf_Course_(150).jpg
+  The resized and cropped derivatives keep the same license.
+
+COURSE DIRECTORY
+- public/assets/courses.json: Wikidata golf-course records, CC0 1.0, retrieved 2026-11-03.
+  It holds 1,306 references across 61 countries and territories, with US states added from
+  Wikidata's administrative hierarchy. It's a planning reference, not live inventory.
+  https://www.wikidata.org/wiki/Wikidata:Licensing
+- public/assets/venue-media.json: venue photo records from Wikidata (P18/P625) and Wikimedia
+  Commons. Only CC BY, CC BY-SA, CC0 and public-domain files are included, and each record
+  carries its author and license. Images load on demand through the site's own photo route;
+  browsers never supply a remote URL. Rebuild: scripts/source-venue-media.py.
+- public/assets/standrews-800.webp: Optograph, CC BY-SA 3.0. The derivative keeps that license.
+  https://commons.wikimedia.org/wiki/File:R%26A_Clubhouse,_Old_Course,_Swilcan_Burn_bridge.jpg
+
+GLOBE
+public/assets/earth-blue-marble-1024.webp: NASA Goddard Space Flight Center, Reto Stöckli and
+Robert Simmon, "Land ocean ice 2048.jpg", CC BY-SA 3.0. The derivative keeps that license.
+https://commons.wikimedia.org/wiki/File:Land_ocean_ice_2048.jpg
+
+FONTS (SIL Open Font License 1.1; license files sit beside the fonts)
+- Marcellus SC and Montserrat: public/assets/brand/
+- Cormorant Garamond and DM Sans: WOFF2 in public/assets/ for the site, TTF in public/assets/pdf/
+  for PDF trip briefs
+
+SOFTWARE
+pdf-lib 1.17.1 and @pdf-lib/fontkit 1.1.1, MIT License (public/assets/pdf/PDF-LIB-LICENSE.txt).
+They are bundled into the generated public/trip-pdf.js.
+
+DATA
+public/assets/timezones.json: IANA time zone database 2026f (public domain). Snapshots are in
+source-media/timezones/. Rebuild: scripts/build-timezone-index.mjs.
+https://www.iana.org/time-zones
+
+NOT PUBLISHED: source-media/permission-pending/
+Official course media, taken from each venue's public website. Commercial publication rights
+have not been confirmed. Obtain permission or licensed replacements before any public use.
+- Adare Manor: https://www.adaremanor.com/wp-content/uploads/2024/09/golf-at-adare-manor-39.jpg
+- Andermatt photo (Valentin Luthiger): https://images.ctfassets.net/yuxsgmojbn4b/3FdWrxpZ5sZ4L2e9tuunNL/7e571340d7f34d4d7f33304d751f3c17/Andermatt_Golf_Course_Valentin_Luthiger_2020.jpg
+- Andermatt film: header film from Andermatt's public website (11.76 seconds)
+- Bernardus: https://bernardusgolf.com/wp-content/uploads/2025/12/bernardus_hole1_hc.jpg
+- Bro Hof Slott (Jacob Sjöman; keep his attribution and signature):
+  https://www.brohofslott.com/media/iv3cm1d0/051_brohof_stadiumcourse_jacobsjoman_16bits_lowres_instanew.jpg
+- Cape Kidnappers: Rosewood official course media,
+  https://www.rosewoodhotels.com/en/cape-kidnappers/experiences/golf
+- Quinta do Lago South Course: official gallery, https://www.quintadolago.com/en/gallery/
+  https://d14k3pdvyik68f.cloudfront.net/uploads/tagged_gallery/Quinta_do_Lago_-_South_Course_1_Ov7R7lR.jpg

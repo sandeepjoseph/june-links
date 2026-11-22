@@ -1,0 +1,45 @@
+{
+  "delivery": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "seconds": 19.5,
+    "bytes": 6855136,
+    "audio": false
+  },
+  "shots": [
+    [
+      "parkland-uk.mp4",
+      3
+    ],
+    [
+      "coast-mexico.mp4",
+      7
+    ],
+    [
+      "coast-california.mp4",
+      4
+    ]
+  ],
+  "transition": "one-second recorded-scene dissolves; cyclic edit returns to the opening frame",
+  "grade": "modest daylight contrast, shadow lift and saturation; no synthetic greens or scenery",
+  "source": "Pexels recorded footage",
+  "sources": [
+    {
+      "page": "https://www.pexels.com/video/scenic-coastline-golf-course-at-rancho-palos-verdes-30743320/",
+      "creator": "Logan Voss",
+      "file": "coast-california.mp4"
+    },
+    {
+      "page": "https://www.pexels.com/video/scenic-aerial-view-of-lush-golf-course-and-lake-32304033/",
+      "creator": "David Pickup",
+      "file": "parkland-uk.mp4"
+    },
+    {
+      "page": "https://www.pexels.com/video/hole-17-18764316/",
+      "creator": "Sergio Benitez",
+      "file": "coast-mexico.mp4"
+    }
+  ],
+  "license": "https://www.pexels.com/license/"
+}

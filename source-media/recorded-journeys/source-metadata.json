@@ -1,0 +1,41 @@
+[
+  {
+    "file": "coast-mexico.mp4",
+    "metadata": {
+      "ffmpeg_version": "9.0.2-tessus  https://evermeet.cx/ffmpeg/ built with Apple clang version 17.0.0 (clang-1700.6.4.2)",
+      "codec": "h264",
+      "pix_fmt": "yuv420p(tv, bt709, progressive)",
+      "fps": "29.97",
+      "source_size": "(1920, 1080)",
+      "size": "(1920, 1080)",
+      "rotate": "0",
+      "duration": "29.7"
+    }
+  },
+  {
+    "file": "parkland-uk.mp4",
+    "metadata": {
+      "ffmpeg_version": "9.0.2-tessus  https://evermeet.cx/ffmpeg/ built with Apple clang version 17.0.0 (clang-1700.6.4.2)",
+      "codec": "h264",
+      "pix_fmt": "yuv420p(tv, bt709, progressive)",
+      "fps": "29.97",
+      "source_size": "(3840, 2160)",
+      "size": "(3840, 2160)",
+      "rotate": "0",
+      "duration": "33.97"
+    }
+  },
+  {
+    "file": "coast-california.mp4",
+    "metadata": {
+      "ffmpeg_version": "9.0.2-tessus  https://evermeet.cx/ffmpeg/ built with Apple clang version 17.0.0 (clang-1700.6.4.2)",
+      "codec": "h264",
+      "pix_fmt": "yuv420p(tv, bt709, progressive)",
+      "fps": "30.0",
+      "source_size": "(1920, 1080)",
+      "size": "(1920, 1080)",
+      "rotate": "0",
+      "duration": "105.33"
+    }
+  }
+]

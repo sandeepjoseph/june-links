@@ -1,0 +1,47 @@
+/* June Links — a contained course atlas, with journey-level gold detailing. */
+.atlas-toolbar{display:flex;justify-content:space-between;align-items:end;gap:24px;margin:32px 0 20px}
+.atlas-toolbar p,.atlas-origin label{font-size:12px;color:var(--muted);margin:0 0 8px;display:block}
+.atlas-care{display:flex;padding:4px;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.atlas-care button{display:flex;align-items:center;gap:9px;padding:10px 14px;min-height:44px;font-size:12px;border-radius:5px;color:var(--muted)}
+.atlas-care button[aria-pressed=true]{background:var(--section);color:var(--ink);box-shadow:inset 0 1px 0 #fff5,0 2px 5px #102a2010}
+.atlas-origin select{min-height:44px!important;font-size:13px!important;width:220px;background:transparent!important;border-color:var(--line)!important;border-radius:6px!important}
+.atlas-note{font-size:11px;color:var(--muted);margin:12px 0 24px;max-width:90ch}
+.atlas-photo-filter{display:flex;gap:8px;align-items:center;font-size:12px;min-height:44px;cursor:pointer}
+.atlas-window{position:relative;height:660px;max-height:76svh;min-height:420px}
+.atlas-scroll{height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;padding:4px 8px 28px 4px;scrollbar-width:thin;scrollbar-color:transparent transparent;scroll-behavior:smooth;border-radius:8px;scroll-padding-block:12px}
+.atlas-scroll:hover,.atlas-scroll:focus-within{scrollbar-color:#a8966a77 transparent}
+.atlas-scroll::-webkit-scrollbar{width:5px}.atlas-scroll::-webkit-scrollbar-thumb{background:transparent;border-radius:4px}.atlas-scroll:hover::-webkit-scrollbar-thumb,.atlas-scroll:focus-within::-webkit-scrollbar-thumb{background:#a8966a77}
+.atlas-scroll:focus-visible{outline:2px solid var(--green);outline-offset:5px}
+.atlas-window:after{content:'';position:absolute;inset:auto 8px 0 0;height:28px;pointer-events:none;background:linear-gradient(transparent,var(--cream))}
+.atlas-scroll .world-results{gap:20px;align-items:stretch}
+.atlas-scroll .world-venue{padding:0;min-height:0;border-radius:8px;background:var(--paper);overflow:hidden}
+.atlas-scroll .world-venue:before{display:none}
+.venue-photo{height:192px;margin:0;position:relative;overflow:hidden;background:var(--section)}
+.venue-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 650ms cubic-bezier(.22,1,.36,1)}
+
+.venue-copy{padding:22px 22px 16px;display:flex;flex:1;flex-direction:column}
+.atlas-scroll .world-venue-country{font-size:11px;margin:0 0 9px}.atlas-scroll .world-venue h3{font-size:22px;line-height:1.2;margin:0 0 9px}
+.atlas-scroll .world-venue-place{font-size:12px;margin:0 0 24px}
+.atlas-scroll .world-venue-bottom{align-items:center;gap:12px}
+.venue-select{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:44px;border-top:1px solid var(--line);padding:12px 0 4px;font-size:12px;text-align:left;color:var(--green)}
+.venue-select span:last-child{font-size:18px}.venue-select[aria-pressed=true]{color:var(--green);font-weight:600}
+.venue-links{display:flex;flex-wrap:wrap;gap:12px;align-items:start;padding:0 22px 18px;font-size:10px;color:var(--muted)}
+.venue-links a{text-decoration:underline;text-underline-offset:3px;min-height:24px}
+.venue-credit{font-size:9px;line-height:1.5;width:100%;margin:0;color:var(--muted)}.venue-credit a{min-height:0}
+.venue-unpictured{display:grid;place-content:center;text-align:center;padding:24px;color:var(--muted);background:var(--section);height:192px;font-size:12px}
+.venue-unpictured:before{content:'June Links';display:block;font-size:21px;letter-spacing:-.03em;color:var(--ink);margin-bottom:12px}
+.venue-unpictured small{font-size:11px;margin-top:6px}
+.atlas-pagination{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding:16px 0;margin-top:16px}
+.atlas-pagination p{margin:0;font-size:11px;color:var(--muted)}.atlas-page-actions{display:flex;gap:8px}.atlas-page-actions button{min-height:44px;padding:8px 16px;font-size:12px;border:1px solid var(--line);border-radius:5px}
+.atlas-selection{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:52px;padding:14px 20px;border:1px solid #b8975a80;border-radius:6px;font-size:12px;background:var(--paper);margin-bottom:20px}
+.atlas-selection p{margin:0}.atlas-selection a{text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.world-bespoke{margin-top:28px!important}.world-empty{min-height:360px;display:flex;flex-direction:column;justify-content:center}.world-empty button{align-self:start}
+
+@media(max-width:1000px){.atlas-scroll .world-results{grid-template-columns:repeat(2,minmax(0,1fr))}.atlas-care button{padding-inline:12px}}
+@media(max-width:600px){.atlas-toolbar{align-items:start;flex-direction:column;gap:20px}.atlas-care{width:100%}.atlas-care button{flex:1;justify-content:center;padding:10px 9px;font-size:11px;white-space:nowrap;gap:8px}.atlas-toolbar>div{width:100%}.atlas-origin select{width:100%}.atlas-scroll .world-results{grid-template-columns:1fr;gap:16px}.atlas-window{height:620px;max-height:72svh;min-height:400px}.venue-photo{height:216px}.atlas-pagination{gap:8px;align-items:start}.atlas-page-actions{gap:6px}.atlas-page-actions button{padding:8px 12px}.atlas-pagination p{max-width:150px;line-height:1.6}.atlas-selection{align-items:start;flex-direction:column;gap:8px}.atlas-scroll{padding-inline:2px 6px}.atlas-note{line-height:1.7}.world-results-head{flex-wrap:wrap;gap:4px!important}}
+@media(prefers-reduced-motion:reduce){.venue-photo img{transition:none}.atlas-scroll{scroll-behavior:auto}}
+@media(forced-colors:active){.atlas-scroll{scrollbar-color:auto}.atlas-care button[aria-pressed=true]{outline:2px solid Highlight}}
+
+/* Keep the page and focused controls fixed while the inner collection changes. */
+.atlas-window{contain:layout paint;overflow-anchor:none}.atlas-scroll{overscroll-behavior-y:auto;scroll-behavior:auto;overflow-anchor:none}.atlas-scroll .world-venue{contain:layout paint}.atlas-selection{height:72px;margin-bottom:20px;overflow:hidden}.atlas-selection p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.venue-credit summary{font-size:12px;padding:4px 0;min-height:32px;font-weight:400;letter-spacing:0;list-style:revert}.venue-credit summary:after{display:none}.venue-credit p{font-size:11px;margin:8px 0 0;line-height:1.6}.venue-credit{margin:0}.venue-photo img{background:var(--section)}.world-venue.is-selected{outline:2px solid var(--gold);outline-offset:-2px}.atlas-scroll-hint{font-size:12px}.atlas-photo-filter input{accent-color:var(--green)}.origin-locate{min-height:44px;padding:8px 0;font-size:13px;text-decoration:underline;text-underline-offset:4px}.origin-note{display:block;font-size:12px;color:var(--muted);max-width:28ch}.origin-note:empty{display:none}
+@media(max-width:600px){.atlas-selection{height:96px;gap:4px;padding:12px 16px}.atlas-photo-filter{font-size:13px}.atlas-page-actions button{font-size:13px}}

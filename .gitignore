@@ -1,0 +1,28 @@
+# Dependencies and generated build output
+node_modules/
+dist/
+worker/index.js
+public/trip-pdf.js
+
+# Local data, secrets and logs
+.local/
+.env
+.env.*
+!.env.local.example
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+.DS_Store
+
+# Temporary working folders
+/tmp/
+/output/
+/outputs/
+/.media-research/
+__pycache__/
+site.tar.gz
+
+# Over GitHub's 100 MB file limit; attached to the source-media-2026-11-21 release (see README.md)
+/source-media/recorded-journeys/parkland-uk.mp4
