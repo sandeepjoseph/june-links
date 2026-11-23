@@ -24,5 +24,6 @@ public/trip-pdf.js
 __pycache__/
 site.tar.gz
 
-# Over GitHub's 100 MB file limit; attached to the source-media-2026-11-21 release (see README.md)
+# Over GitHub's 100 MB file limit: Git stores its .part-* files, and npm ci joins them
 /source-media/recorded-journeys/parkland-uk.mp4
+*.joining

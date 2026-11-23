@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "postinstall": "node scripts/join-source-media.mjs",
     "build": "node scripts/compile-assets.mjs && bash scripts/build.sh",
     "validate": "node scripts/validate-artifact.mjs",
     "predev": "node scripts/compile-assets.mjs",

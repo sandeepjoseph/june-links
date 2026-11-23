@@ -45,6 +45,7 @@ Generated files, not stored in Git:
 
 - `worker/index.js` and `public/trip-pdf.js`, written by `scripts/compile-assets.mjs`
 - `dist/`, written by `npm run build`
+- `source-media/recorded-journeys/parkland-uk.mp4`, joined from its parts by `npm ci` (see [Media](#media))
 - `.local/` and `node_modules/`
 
 ## Editing
@@ -80,11 +81,7 @@ The recipient address is fixed server-side in `lib/inquiry-mail.mjs`, and each e
 
 `public/` holds the optimized media the site serves. `source-media/` holds the originals:
 
-- `recorded-journeys/`: the three source films behind the hero film. Rebuild with `python3 scripts/build-recorded-hero.py` (needs ffmpeg and Pillow). `parkland-uk.mp4` (200 MB) is over GitHub's 100 MB file limit, so it's attached to the [`source-media-2026-11-21` release](https://github.com/sandeepjoseph/june-links/releases/tag/source-media-2026-11-21) instead. Download it into place with:
-
-  ```sh
-  gh release download source-media-2026-11-21 -R sandeepjoseph/june-links -D source-media/recorded-journeys
-  ```
+- `recorded-journeys/`: the three source films behind the hero film. Rebuild with `python3 scripts/build-recorded-hero.py` (needs ffmpeg and Pillow). `parkland-uk.mp4` (200 MB) is over GitHub's 100 MB file limit, so Git stores it as five parts, `parkland-uk.mp4.part-aa` to `part-ae`. `npm ci` joins them back into the original file and verifies its checksum. To join them by hand, run `node scripts/join-source-media.mjs`.
 
 - `timezones/`: IANA time-zone snapshots. Rebuild `public/assets/timezones.json` with `node scripts/build-timezone-index.mjs`.
 - `permission-pending/`: official course photos and an Andermatt clip. Their publication rights have **not** been granted. Keep them off the site until they are.
